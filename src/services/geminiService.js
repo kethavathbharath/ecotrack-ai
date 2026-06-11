@@ -4,8 +4,8 @@
  */
 
 const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
-// Using the same model and auth style as the user's curl command
-const GEMINI_MODEL   = 'gemini-2.0-flash';
+// gemini-1.5-flash has higher free tier quota than gemini-2.0-flash
+const GEMINI_MODEL   = 'gemini-1.5-flash';
 const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
 
 /**
