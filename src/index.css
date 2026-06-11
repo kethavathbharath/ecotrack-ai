@@ -1,0 +1,263 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── CSS Variables ── */
+:root {
+  --eco-primary: #22c55e;
+  --eco-dark: #052e16;
+  --eco-mid: #14532d;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Base Reset ── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #030f07;
+  color: #f0fdf4;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
+::-webkit-scrollbar-thumb { background: rgba(34,197,94,0.4); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(34,197,94,0.7); }
+
+/* ── Glass Card ── */
+@layer components {
+  .glass-card {
+    @apply rounded-2xl border border-white/10 backdrop-blur-md;
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+  }
+
+  .glass-card:hover {
+    border-color: rgba(34, 197, 94, 0.25);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(34, 197, 94, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+  }
+
+  .glass-card-strong {
+    @apply rounded-2xl border border-white/15 backdrop-blur-xl;
+    background: rgba(255, 255, 255, 0.07);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+
+  .eco-btn {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 cursor-pointer;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(34,197,94,0.35);
+  }
+
+  .eco-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px rgba(34,197,94,0.5);
+  }
+
+  .eco-btn:active { transform: translateY(0); }
+
+  .eco-btn-outline {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 cursor-pointer border border-eco-500/40 text-eco-400;
+    background: rgba(34,197,94,0.08);
+  }
+
+  .eco-btn-outline:hover {
+    background: rgba(34,197,94,0.15);
+    border-color: rgba(34,197,94,0.6);
+    color: #4ade80;
+  }
+
+  .eco-input {
+    @apply w-full rounded-xl px-4 py-3 text-sm outline-none transition-all duration-200;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #f0fdf4;
+  }
+
+  .eco-input:focus {
+    border-color: rgba(34,197,94,0.5);
+    box-shadow: 0 0 0 3px rgba(34,197,94,0.1);
+    background: rgba(255,255,255,0.07);
+  }
+
+  .eco-input::placeholder { color: rgba(255,255,255,0.3); }
+
+  .eco-label {
+    @apply block text-xs font-medium mb-1.5 text-eco-300/80 uppercase tracking-wide;
+  }
+
+  .glow-text {
+    text-shadow: 0 0 30px rgba(34,197,94,0.6), 0 0 60px rgba(34,197,94,0.3);
+  }
+
+  .section-title {
+    @apply font-display text-2xl font-bold text-white mb-1;
+  }
+
+  .section-sub {
+    @apply text-sm text-eco-300/60 mb-6;
+  }
+
+  .stat-card {
+    @apply glass-card p-5 flex flex-col gap-2;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold;
+  }
+
+  .badge-green { @apply badge bg-eco-500/20 text-eco-300 border border-eco-500/30; }
+  .badge-yellow { @apply badge bg-yellow-500/20 text-yellow-300 border border-yellow-500/30; }
+  .badge-red { @apply badge bg-red-500/20 text-red-300 border border-red-500/30; }
+  .badge-blue { @apply badge bg-blue-500/20 text-blue-300 border border-blue-500/30; }
+}
+
+/* ── Animated background ── */
+.bg-animated {
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(34,197,94,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(22,163,74,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(21,128,61,0.04) 0%, transparent 50%),
+    linear-gradient(180deg, #030f07 0%, #051a0d 100%);
+  min-height: 100vh;
+}
+
+/* ── Progress bar ── */
+.progress-bar {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #22c55e, #4ade80);
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 10px rgba(34,197,94,0.5);
+}
+
+/* ── Score ring ── */
+.score-ring {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Sidebar active ── */
+.nav-item {
+  @apply flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 cursor-pointer;
+  color: rgba(255,255,255,0.5);
+}
+
+.nav-item:hover {
+  color: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.05);
+}
+
+.nav-item.active {
+  color: #4ade80;
+  background: rgba(34,197,94,0.12);
+  border: 1px solid rgba(34,197,94,0.2);
+  box-shadow: 0 0 15px rgba(34,197,94,0.1);
+}
+
+/* ── Challenge card ── */
+.challenge-card {
+  @apply glass-card p-4 flex items-center gap-4 cursor-pointer select-none;
+}
+
+.challenge-card.completed {
+  border-color: rgba(34,197,94,0.3);
+  background: rgba(34,197,94,0.06);
+}
+
+/* ── Chart tooltip ── */
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  background: rgba(5,46,22,0.95) !important;
+  border: 1px solid rgba(34,197,94,0.3) !important;
+  border-radius: 12px !important;
+  padding: 12px 16px !important;
+}
+
+/* ── Loading spinner ── */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(34,197,94,0.2);
+  border-top-color: #22c55e;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Recommendation card ── */
+.rec-card {
+  @apply glass-card p-5 border-l-2;
+  border-left-color: rgba(34,197,94,0.5);
+}
+
+/* ── Mobile overlay ── */
+.sidebar-overlay {
+  @apply fixed inset-0 bg-black/60 backdrop-blur-sm z-20 lg:hidden;
+}
+
+/* ── Landing hero ── */
+.hero-gradient {
+  background: 
+    radial-gradient(ellipse at 50% 0%, rgba(34,197,94,0.2) 0%, transparent 60%),
+    linear-gradient(180deg, #030f07 0%, #051a0d 100%);
+}
+
+/* ── Dark mode light override ── */
+.light body {
+  background: #f0fdf4;
+  color: #052e16;
+}
+
+/* ── Animations ── */
+.animate-fade-up {
+  animation: fadeUp 0.6s ease-out both;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.5s ease-out both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Delay utilities ── */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
