@@ -4,9 +4,9 @@
  */
 
 const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
-// gemini-1.5-flash has higher free tier quota than gemini-2.0-flash
-const GEMINI_MODEL   = 'gemini-1.5-flash';
-const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
+// Use gemini-1.5-flash-latest with v1 endpoint for best compatibility
+const GEMINI_MODEL   = 'gemini-1.5-flash-latest';
+const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1/models/${GEMINI_MODEL}:generateContent`;
 
 /**
  * Make a Gemini API request
